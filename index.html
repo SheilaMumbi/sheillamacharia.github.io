@@ -1,249 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheilla Mumbi Macharia | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-        :root {
-            --bg: #030712;
-            --accent: #38bdf8;
-            --secondary: #818cf8;
-            --glass: rgba(15, 23, 42, 0.8);
-            --card-bg: #0f172a;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sheilla Mumbi Macharia — Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        * { box-sizing: border-box; }
+    :root {
+      --navy:    #0D1B2A;
+      --navy2:   #162436;
+      --navy3:   #1E3048;
+      --amber:   #F4A261;
+      --amber2:  #E8873A;
+      --teal:    #4ECDC4;
+      --text:    #E8EDF2;
+      --muted:   #8CA0B4;
+      --border:  rgba(255,255,255,0.08);
+      --card:    rgba(255,255,255,0.04);
+    }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: #f8fafc;
-            margin: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+    html { scroll-behavior: smooth; }
 
-        /* Layout Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 0;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6%;
+      background: rgba(13,27,42,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      color: var(--amber); letter-spacing: 0.03em;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
 
-        .nav-links a {
-            color: #f8fafc;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        .nav-links a:hover { opacity: 1; color: var(--accent); }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 6% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--amber);
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: normal; color: var(--amber); }
+    .hero-sub {
+      max-width: 560px;
+      font-size: 1.125rem; color: var(--muted);
+      line-height: 1.7; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.2s;
+      border: none; outline: none;
+      background: none;
+    }
+    .btn-primary {
+      background: var(--amber); color: var(--navy);
+    }
+    .btn-primary:hover { background: var(--amber2); transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
 
-        /* HERO SECTION - The Centered Part */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
+    /* Signature: animated SVG chart trace */
+    .hero-chart {
+      position: absolute; right: 4%; bottom: 10%;
+      width: min(540px, 50vw); opacity: 0.15;
+      pointer-events: none;
+    }
+    .chart-path {
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: drawLine 3s ease forwards 0.4s;
+    }
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+    .chart-dot {
+      opacity: 0;
+      animation: popDot 0.3s ease forwards;
+    }
 
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            margin: 20px 0 30px 0;
-            line-height: 1.1;
-        }
+    /* ── SECTIONS SHARED ── */
+    section { padding: 96px 6%; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 48px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; max-width: 48px;
+      height: 1px; background: var(--amber);
+    }
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
 
-        .highlight-solve { color: var(--accent); text-shadow: 0 0 30px rgba(56, 189, 248, 0.4); }
-        .highlight-story { color: var(--secondary); text-shadow: 0 0 30px rgba(129, 140, 248, 0.4); }
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo-bg {
+      position: absolute; inset: 16px -16px -16px 16px;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--teal) 100%);
+      border-radius: 4px; opacity: 0.25;
+    }
+    .about-photo {
+      position: relative; width: 100%;
+      aspect-ratio: 4/5; border-radius: 4px;
+      background: var(--navy3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: var(--amber);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 20px; }
+    .stat-row { display: flex; gap: 32px; margin-top: 32px; }
+    .stat { }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700; color: var(--amber);
+    }
+    .stat-lbl { font-size: 0.8rem; color: var(--muted); }
 
-        /* Toolbelt/Skills */
-        .toolbelt {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
+    /* ── SKILLS ── */
+    .skills-section { background: var(--navy2); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px; padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--amber); transform: translateY(-3px); }
+    .skill-card-icon {
+      font-size: 1.5rem; margin-bottom: 14px;
+    }
+    .skill-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 10px;
+    }
+    .skill-card p {
+      font-size: 0.875rem; color: var(--muted); line-height: 1.6;
+    }
 
-        .skill-tag {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(30, 41, 59, 0.5);
-            padding: 10px 20px;
-            border-radius: 100px;
-            font-weight: 800;
-            font-size: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 6px; padding: 32px;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--amber), var(--teal));
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .project-card:hover { border-color: rgba(244,162,97,0.3); transform: translateY(-4px); }
+    .project-card:hover::before { opacity: 1; }
+    .project-domain {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .project-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 600;
+      margin-bottom: 12px; line-height: 1.3;
+    }
+    .project-card p {
+      font-size: 0.875rem; color: var(--muted);
+      line-height: 1.65; flex: 1; margin-bottom: 24px;
+    }
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 20px;
+    }
+    .tag {
+      font-size: 0.72rem; font-weight: 500;
+      padding: 4px 10px; border-radius: 3px;
+      background: rgba(244,162,97,0.1);
+      color: var(--amber); border: 1px solid rgba(244,162,97,0.2);
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--amber); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 10px; }
 
-        .tag-python { color: #4b8bbe; border-bottom: 2px solid #4b8bbe; }
-        .tag-sql { color: #f29111; border-bottom: 2px solid #f29111; }
-        .tag-tableau { color: #e97627; border-bottom: 2px solid #e97627; }
-        .tag-ml { color: var(--accent); border-bottom: 2px solid var(--accent); }
+    /* ── EXPERIENCE / EDUCATION ── */
+    .edu-section { background: var(--navy2); }
+    .timeline { max-width: 680px; }
+    .timeline-item {
+      display: flex;
+      gap: 0;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    /* Left column: year label */
+    .timeline-year {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--amber);
+      min-width: 110px;
+      padding-top: 3px;
+      text-align: right;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+    /* Middle column: dot + vertical line */
+    .timeline-spine {
+      display: flex; flex-direction: column; align-items: center;
+      margin: 0 24px;
+      flex-shrink: 0;
+    }
+    .timeline-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--navy2);
+      border: 2px solid var(--amber);
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .timeline-line {
+      width: 1px; flex: 1;
+      background: var(--border);
+      margin-top: 6px;
+    }
+    .timeline-item:last-child .timeline-line { display: none; }
+    /* Right column: content */
+    .timeline-body { padding-bottom: 8px; }
+    .timeline-body h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600;
+      margin-bottom: 4px; line-height: 1.3;
+    }
+    .timeline-body .org {
+      font-size: 0.875rem; color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .timeline-body p {
+      font-size: 0.875rem; color: var(--muted); line-height: 1.65;
+    }
 
-        /* PROJECT GRID SECTION */
-        .projects-section { padding: 100px 0; }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
+    /* ── CERTS ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px; padding: 22px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: var(--teal); }
+    .cert-icon {
+      font-size: 1.4rem; margin-top: 2px; flex-shrink: 0;
+    }
+    .cert-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .cert-card .cert-org {
+      font-size: 0.8rem; color: var(--teal);
+    }
 
-        .card {
-            background: var(--glass);
-            border: 2px solid #1e293b;
-            border-radius: 30px;
-            padding: 10px;
-            transition: transform 0.3s ease;
-        }
+    /* ── RESUME ── */
+    .resume-section {
+      background: var(--navy2);
+      text-align: center;
+    }
+    .resume-card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px 56px;
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .resume-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--amber), var(--teal));
+    }
+    .resume-icon {
+      font-size: 3rem; line-height: 1;
+    }
+    .resume-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .resume-card p {
+      color: var(--muted); font-size: 0.9rem;
+      max-width: 360px; line-height: 1.6;
+    }
+    .resume-actions {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+      margin-top: 8px;
+    }
+    .btn-download {
+      background: var(--amber); color: var(--navy);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-download:hover { background: var(--amber2); transform: translateY(-1px); }
+    .btn-view-gh {
+      border: 1px solid var(--border); color: var(--text);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-view-gh:hover { border-color: var(--amber); color: var(--amber); }
 
-        .card:hover { transform: rotate(-2deg) scale(1.02); border-color: var(--accent); }
+    /* ── CONTACT ── */
+    .contact-section {
+      text-align: center;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy3) 100%);
+    }
+    .contact-section h2 { margin-bottom: 12px; }
+    .contact-section .sub {
+      color: var(--muted); max-width: 440px;
+      margin: 0 auto 40px;
+    }
+    .contact-links {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .contact-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .contact-chip:hover {
+      border-color: var(--amber); color: var(--amber);
+      transform: translateY(-2px);
+    }
+    .contact-chip svg { opacity: 0.7; }
 
-        .card-inner {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 28px 6%;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
+    }
 
-        .card h3 { margin: 15px 0 10px 0; }
-        .card p { opacity: 0.7; font-size: 0.9rem; flex-grow: 1; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-wrap { max-width: 280px; }
+      .hero-chart { display: none; }
+      .nav-links { display: none; }
+      .timeline-item { grid-template-columns: 80px 1fr; gap: 20px; }
+      .timeline-item::after { left: 79px; }
+      .timeline-dot { left: 72px; }
+    }
 
-        /* Buttons */
-        .btn {
-            background: transparent;
-            color: var(--accent);
-            padding: 15px 35px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 800;
-            border: 2px solid var(--accent);
-            display: inline-block;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .btn:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
-
-        .btn-filled { background: var(--accent); color: var(--bg); }
-
-        /* Doodles */
-        .doodle { position: absolute; z-index: -1; opacity: 0.2; }
-
-        footer { text-align: center; padding: 60px 0; opacity: 0.4; font-size: 0.8rem; }
-    </style>
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .chart-path { animation: none; stroke-dashoffset: 0; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <div style="font-weight: 800; font-size: 1.2rem;">SM.</div>
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="https://github.com/SheilaMumbi">Github</a>
-                <a href="https://www.linkedin.com/in/sheilla-macharia-458422324/">Linkedin</a>
-                
-            </div>
-        </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SMM</div>
+  <ul class="nav-links">
+    <li><a href="#about"     onclick="navScroll('about');return false;">About</a></li>
+    <li><a href="#skills"    onclick="navScroll('skills');return false;">Skills</a></li>
+    <li><a href="#projects"  onclick="navScroll('projects');return false;">Projects</a></li>
+    <li><a href="#education" onclick="navScroll('education');return false;">Education</a></li>
+    <li><a href="#resume"    onclick="navScroll('resume');return false;">Resume</a></li>
+    <li><a href="#contact"   onclick="navScroll('contact');return false;">Contact</a></li>
+  </ul>
+</nav>
 
-        <section class="hero">
-            <svg class="doodle" style="top:10%; left:-5%; width:200px" viewBox="0 0 100 100"><path d="M10,50 Q25,10 50,50 T90,50" fill="none" stroke="#38bdf8" stroke-width="2"/></svg>
-            
-            <p>Hi, I'm Sheilla Mumbi Macharia 👋🏾</p>
-            <h1>I <span class="highlight-solve">solve</span> and <span class="highlight-story">storytell</span> with data.</h1>
-            
-            <div class="toolbelt">
-                <div class="skill-tag tag-python"><i class="ph-bold ph-code"></i> PYTHON</div>
-                <div class="skill-tag tag-sql"><i class="ph-bold ph-database"></i> SQL</div>
-                <div class="skill-tag tag-tableau"><i class="ph-bold ph-chart-pie-slice"></i> TABLEAU</div>
-                <div class="skill-tag tag-ml"><i class="ph-bold ph-brain"></i> ML MODELING</div>
-            </div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Data Scientist · Nairobi, Kenya</div>
+  <h1>Turning raw data<br>into <em>clear decisions</em></h1>
+  <p class="hero-sub">
+    Applied mathematician and data science practitioner building predictive models,
+    dashboards, and analytics tools across health, retail, telecom, and aviation.
+  </p>
+  <div class="hero-ctas">
+    <button class="btn btn-primary" onclick="navScroll('projects')">View Projects ↓</button>
+    <button class="btn btn-ghost" onclick="navScroll('contact')">Get in Touch</button>
+  </div>
 
-            <a href="mailto:sheilamacharia8@gmail.com" class="btn">Contact Me</a>
-        </section>
+  <!-- Signature animated chart -->
+  <svg class="hero-chart" viewBox="0 0 540 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="chart-path"
+      d="M0 200 L40 180 L80 190 L120 140 L160 150 L200 100 L240 120 L280 80 L320 90 L360 50 L400 70 L440 30 L480 45 L540 20"
+      stroke="#F4A261" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- dots -->
+    <circle cx="200" cy="100" r="5" fill="#F4A261" class="chart-dot" style="animation-delay:1.4s"/>
+    <circle cx="280" cy="80"  r="5" fill="#4ECDC4" class="chart-dot" style="animation-delay:1.8s"/>
+    <circle cx="360" cy="50"  r="5" fill="#F4A261" class="chart-dot" style="animation-delay:2.2s"/>
+    <circle cx="440" cy="30"  r="5" fill="#4ECDC4" class="chart-dot" style="animation-delay:2.6s"/>
+    <!-- axes -->
+    <line x1="0" y1="240" x2="540" y2="240" stroke="#4ECDC4" stroke-width="1" opacity="0.3"/>
+    <line x1="0" y1="0" x2="0" y2="240" stroke="#4ECDC4" stroke-width="1" opacity="0.3"/>
+  </svg>
+</section>
 
-        <section class="projects-section" id="projects">
-            <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; text-align: center; margin-bottom: 50px;">Featured <span class="highlight-solve">Projects</span></h2>
-            
-            <div class="project-grid">
-                <div class="card">
-                    <div class="card-inner">
-                        <span class="tag-ml" style="font-size: 0.6rem; padding: 4px 10px;">PREDICTIVE</span>
-                        <h3>SyriaTel Churn</h3>
-                        <p>Identifying commercial drivers of churn to protect revenue streams.</p>
-                        <a href="https://github.com/sheillamacharia/SyriaTel_Retention_Insights.git" style="color:var(--accent); text-decoration:none; font-weight:800; margin-top:15px;">View Repo →</a>
-                    </div>
-                </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="about-photo-wrap">
+      <div class="about-photo-bg"></div>
+      <div class="about-photo">
+        <img src="Sheilla_Macharia.jpeg" alt="Sheilla Mumbi Macharia" onerror="this.style.display='none'; this.parentElement.innerHTML='👩🏾‍💻';" />
+      </div>
+    </div>
+    <div class="about-text">
+      <h2>Hi, I'm Sheilla</h2>
+      <p>
+        I'm an early-career data scientist with a B.Sc. in Applied Mathematics from the University of Nairobi
+        and intensive training from the Moringa School Data Science Bootcamp.
+      </p>
+      <p>
+        I specialize in predictive modeling, business analytics, and data visualization — translating messy
+        datasets into stories that help organizations act smarter. My projects span telecom churn prediction,
+        aviation safety analysis, retail efficiency, and health outcome modeling.
+      </p>
+      <p>
+        I'm drawn to roles where data directly influences commercial decisions. I thrive on the "why behind the numbers."
+      </p>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-lbl">Projects shipped</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-lbl">Certifications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-lbl">Tools & languages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div class="card">
-                    <div class="card-inner">
-                        <span class="tag-tableau" style="font-size: 0.6rem; padding: 4px 10px;">TABLEAU</span>
-                        <h3>Aviation Risk</h3>
-                        <p>100-year safety analysis visualizing risk factors across aircraft models.</p>
-                        <a href="https://public.tableau.com/views/AviationAccidentRates/AircraftandOperationalRiskFactors?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" style="color:var(--accent); text-decoration:none; font-weight:800; margin-top:15px;">Dashboard →</a>
-                    </div>
-                </div>
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-label">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">🐍</div>
+      <h3>Languages</h3>
+      <p>Python, SQL, HTML/CSS — core tools for data wrangling, querying, and building web-ready outputs.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📦</div>
+      <h3>Libraries & Frameworks</h3>
+      <p>Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Streamlit — the full Python data stack.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📊</div>
+      <h3>Visualization & BI</h3>
+      <p>Tableau, Power BI, Excel — building executive-ready dashboards and interactive reports.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🤖</div>
+      <h3>Machine Learning</h3>
+      <p>Classification, regression, feature engineering, model evaluation — predictive modeling end-to-end.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🔍</div>
+      <h3>Analytics</h3>
+      <p>Data cleaning, EDA, KPI design, churn analysis, trend forecasting, and business intelligence.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <h3>Tools & Workflow</h3>
+      <p>Jupyter Notebook, Git, Excel — reproducible analysis and collaborative version control.</p>
+    </div>
+  </div>
+</section>
 
-                <div class="card">
-                    <div class="card-inner">
-                        <span class="tag-python" style="font-size: 0.6rem; padding: 4px 10px;">MATH</span>
-                        <h3>NCAA Forecast</h3>
-                        <p>Probabilistic tournament modeling using historical performance data.</p>
-                        <a href="https://github.com/sheillamacharia/Forecast_the_2026_NCAA_Basketball_Tournaments_Competition.git" style="color:var(--accent); text-decoration:none; font-weight:800; margin-top:15px;">View Repo →</a>
-                    </div>
-                </div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Selected Projects</div>
+  <div class="projects-grid">
 
-                <div class="card">
-                    <div class="card-inner">
-                        <span class="tag-python" style="font-size: 0.6rem; padding: 4px 10px;">Application</span>
-                        <h3>Regional Crop Yield Prediction</h3>
-                        <p>Developing a supervised machine learning model capable of predicting regional crop yield in Kenya using historical production data, climate variables, and agricultural input usage.</p>
-                        <a href="https://regional-crop-yield-prediction-kenya.onrender.com/" style="color:var(--accent); text-decoration:none; font-weight:800; margin-top:15px;">View App →</a>
-                        <a href="https://github.com/sheillamacharia/Regional_Crop_Yield_Prediction_Kenya.git" style="color:var(--accent); text-decoration:none; font-weight:800; margin-top:15px;">View Repo→</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="hero" style="min-height: 60vh;">
-            <h2 style="font-family: 'Space Grotesk'; font-size: 3rem;">Let's <span class="highlight-story">Collaborate</span>.</h2>
-            <p style="margin-bottom: 40px; opacity: 0.8;">Finalizing my Applied Math degree and ready for the next data challenge.</p>
-            
-            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-                <a href="Sheilla_Macharia_CV_2026.pdf" download class="btn btn-filled">DOWNLOAD CV</a>
-                <a href="mailto:sheilamacharia8@gmail.com" class="btn">GET IN TOUCH</a>
-            </div>
-        </section>
-
-        <footer>
-            &copy; 2026 Sheilla Macharia. Built with passion & data.
-        </footer>
+    <div class="project-card">
+      <div class="project-domain">Telecom · Churn Analysis</div>
+      <h3>SyriaTel Retention &amp; Revenue Insights</h3>
+      <p>Consolidated telecom customer datasets, identified churn patterns, and quantified revenue-at-risk segments to deliver targeted retention strategies.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span>
+      </div>
+      <a class="project-link" href="https://github.com/SheilaMumbi/SyriaTel_Retention_Insights" target="_blank">View Repository →</a>
     </div>
 
+    <div class="project-card">
+      <div class="project-domain">Health · Predictive Modeling</div>
+      <h3>Heart Failure Prediction</h3>
+      <p>Clinical data science project predicting heart failure mortality using multi-model comparison — Logistic Regression, SVM, and KNN — with full EDA and inference pipeline.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">EDA</span>
+      </div>
+      <a class="project-link" href="https://github.com/SheilaMumbi/Heart_failure_Prediction" target="_blank">View Repository →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-domain">Aviation · Risk Analytics</div>
+      <h3>Aviation Risk Insights</h3>
+      <p>Analyzed a century of global accident data to identify severity patterns by aircraft model, delivering an interactive Tableau dashboard for aviation safety authorities.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Tableau</span><span class="tag">Pandas</span>
+      </div>
+      <a class="project-link" href="https://github.com/SheilaMumbi/aviation_risk_insights.git" target="_blank">View Repository →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-domain">Agriculture · ML Forecasting</div>
+      <h3>Regional Crop Yield Prediction (Kenya)</h3>
+      <p>Supervised ML model predicting regional crop yield using historical production data, climate variables, and agricultural input usage across Kenyan regions.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Climate Data</span>
+      </div>
+      <a class="project-link" href="https://github.com/SheilaMumbi/Regional_Crop_Yield_Prediction_Kenya" target="_blank">View Repository →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-domain">Retail · Business Intelligence</div>
+      <h3>Supermarket Sales Analysis</h3>
+      <p>End-to-end store performance analysis showing medium-sized stores achieved the highest sales efficiency per square foot — driving layout and inventory recommendations.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Seaborn</span>
+      </div>
+      <a class="project-link" href="https://github.com/SheilaMumbi/Retail_Sales_Dashboard" target="_blank">View Repository →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-domain">Tools · Streamlit App</div>
+      <h3>Data Refinery Studio</h3>
+      <p>A sleek automated data preprocessing and diagnostics studio built with Streamlit and Plotly — upload raw datasets and instantly profile missingness and structural issues.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Plotly</span>
+      </div>
+      <a class="project-link" href="https://github.com/SheilaMumbi/Data_Refinery_Studio" target="_blank">View Repository →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="edu-section">
+  <div class="section-label">Education &amp; Training</div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-year">2021 – 2026</div>
+      <div class="timeline-spine">
+        <div class="timeline-dot"></div>
+        <div class="timeline-line"></div>
+      </div>
+      <div class="timeline-body">
+        <h3>B.Sc. Applied Mathematics</h3>
+        <div class="org">University of Nairobi</div>
+        <p>Strong foundation in statistical theory, linear algebra, and mathematical modeling — directly applied to machine learning and data science work.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">Aug 2025 – Feb 2026</div>
+      <div class="timeline-spine">
+        <div class="timeline-dot"></div>
+        <div class="timeline-line"></div>
+      </div>
+      <div class="timeline-body">
+        <h3>Data Science Bootcamp</h3>
+        <div class="org">Moringa School</div>
+        <p>Intensive hands-on program in Python, machine learning, and data visualization. Capstone project: Regional Crop Yield Prediction (Kenya).</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Certs -->
+  <div class="section-label" style="margin-top: 56px;">Certifications</div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <h3>Data Science Program</h3>
+        <div class="cert-org">eMobilis Technological Institute</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div>
+        <h3>Python for Data Analysis</h3>
+        <div class="cert-org">FreeCodeCamp</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📈</div>
+      <div>
+        <h3>Machine Learning &amp; Data Visualization</h3>
+        <div class="cert-org">Kaggle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="resume-section">
+  <div class="section-label" style="justify-content:center;">Resume</div>
+  <div class="resume-card">
+    <div class="resume-icon">📄</div>
+    <h3>Sheilla Mumbi Macharia</h3>
+    <p>Download my full resume to learn more about my skills, projects, education, and experience in data science and applied mathematics.</p>
+    <div class="resume-actions">
+      <a
+        href="Sheilla_Macharia_CV_2026.pdf"
+        download="Sheilla_Mumbi_Macharia_Resume.pdf"
+        class="btn-download"
+        target="_blank"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label" style="justify-content:center;">Contact</div>
+  <h2>Let's build something with data</h2>
+  <p class="sub">Open to data science roles, analytics projects, and collaborations. Based in Nairobi — available remotely.</p>
+  <div class="contact-links">
+    <a href="mailto:sheilamacharia8@gmail.com" class="contact-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      sheilamacharia8@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/sheilla-macharia-458422324" target="_blank" class="contact-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/SheilaMumbi" target="_blank" class="contact-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="tel:+254740721743" class="contact-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+      +254 740 721 743
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Built with care · Sheilla Mumbi Macharia © 2026 · Nairobi, Kenya</p>
+</footer>
+
+<script>
+  function navScroll(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
