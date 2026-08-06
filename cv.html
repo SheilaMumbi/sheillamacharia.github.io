@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sheilla Mumbi Macharia — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    :root {
+      --ink:      #1A1A1A;
+      --navy:     #1F3864;
+      --navy-dark:#12233D;
+      --muted:    #555555;
+      --bg:       #FFFFFF;
+      --border:   #D9D9D9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #E9E9E9;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.2px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @page { size: A4; margin: 5mm 16mm; }
+
+    .page {
+      max-width: 780px;
+      margin: 40px auto;
+      background: var(--bg);
+      padding: 36px 56px 40px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.14);
+    }
+
+    .print-btn {
+      position: fixed; top: 20px; right: 20px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px; border-radius: 4px;
+      background: var(--navy); color: #fff; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+    .print-btn:hover { background: var(--navy-dark); }
+
+    header.cv-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 16px;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 10px; margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.85rem; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+    .tagline { color: var(--muted); font-size: 0.95rem; }
+    .contact-block {
+      display: flex; flex-direction: column; align-items: flex-end;
+      gap: 2px; font-size: 0.8rem; text-align: right;
+    }
+    .contact-block a { color: var(--navy); text-decoration: none; }
+    .contact-block a:hover { text-decoration: underline; }
+    .contact-block span { color: var(--muted); }
+
+    section { margin-bottom: 5px; }
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px; margin-bottom: 8px;
+      break-after: avoid; page-break-after: avoid;
+    }
+
+    p, li { font-size: 0.87rem; line-height: 1.5; color: var(--ink); }
+    section > p { color: var(--ink); }
+    ul { padding-left: 18px; margin-top: 5px; }
+    li { margin-bottom: 1px; }
+
+    .skills-list div { font-size: 0.85rem; margin-bottom: 5px; line-height: 1.45; }
+    .skills-list strong { color: var(--ink); }
+
+    .project { margin-bottom: 9px; break-inside: avoid; page-break-inside: avoid; }
+    .project:last-child { margin-bottom: 0; }
+    .project-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .project-head h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem; font-weight: 600; color: var(--ink);
+    }
+    .project-head a {
+      font-size: 0.8rem; color: var(--navy); text-decoration: none;
+      white-space: nowrap;
+    }
+    .project-head a:hover { text-decoration: underline; }
+    .project-stack {
+      font-size: 0.78rem; color: var(--muted); font-style: italic;
+      margin: 2px 0 4px;
+    }
+
+    .edu-item, .cert-item {
+      display: flex; justify-content: space-between; gap: 16px;
+      margin-bottom: 2px;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .edu-item:last-child, .cert-item:last-child { margin-bottom: 0; }
+    .edu-main h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.94rem; font-weight: 600; }
+    .edu-main .org { color: var(--navy); font-size: 0.84rem; margin: 2px 0 3px; }
+    .edu-main p { font-size: 0.85rem; color: var(--muted); }
+    .edu-dates { font-size: 0.78rem; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+
+    .cert-item .cert-name { font-size: 0.88rem; font-weight: 600; }
+    .cert-item .cert-org { font-size: 0.82rem; color: var(--muted); }
+
+    footer.langs { font-size: 0.88rem; color: var(--muted); }
+    footer.langs strong { color: var(--ink); }
+
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; margin: 0; padding: 0; max-width: none; }
+      .no-print { display: none !important; }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 32px 22px 40px; margin: 0; }
+      .print-btn { position: static; margin: 16px auto; display: flex; width: fit-content; }
+      header.cv-header { flex-direction: column; align-items: flex-start; }
+      .contact-block { align-items: flex-start; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">⬇ Download as PDF</button>
+
+<div class="page">
+
+  <header class="cv-header">
+    <div>
+      <h1>Sheilla Mumbi Macharia</h1>
+      <p class="tagline">Data Scientist · Applied Mathematics</p>
+    </div>
+    <div class="contact-block">
+      <span>Nairobi, Kenya · +254 740 721 743</span>
+      <a href="mailto:sheilamacharia8@gmail.com">sheilamacharia8@gmail.com</a>
+      <a href="https://www.linkedin.com/in/sheilla-macharia-458422324" target="_blank">LinkedIn</a>
+      <a href="https://github.com/SheilaMumbi" target="_blank">GitHub</a>
+      <a href="https://sheilamumbi.github.io/sheillamacharia.github.io/" target="_blank">Portfolio</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p>
+      Data Science practitioner with a background in Applied Mathematics and hands-on experience across
+      predictive modeling, backend automation, and AI-powered reporting. Skilled in Python, FastAPI, and
+      Streamlit for deriving actionable insights and shipping data-driven applications — from notebook-based
+      analysis to scheduled pipelines and production APIs. Passionate about turning raw data into meaningful
+      stories that drive smarter decisions, with proven success in projects spanning health prediction, agency
+      workflow automation, retail analytics, and aviation risk assessment.
+    </p>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-list">
+      <div><strong>Languages &amp; Core:</strong> Python, SQL, HTML/CSS, Git, GitHub</div>
+      <div><strong>Data Science &amp; ML:</strong> Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Jupyter Notebook</div>
+      <div><strong>Backend &amp; Automation:</strong> FastAPI, Flask, PostgreSQL, Jinja2, Gemini API</div>
+      <div><strong>Visualization &amp; BI:</strong> Tableau, Power BI, Streamlit, Plotly, Excel</div>
+      <div><strong>Frontend:</strong> React, Tailwind CSS</div>
+      <div><strong>Core Skills:</strong> Data Cleaning, Feature Engineering, Predictive Modelling, KPI Design, Sentiment &amp; Time-Series Analysis, Business Intelligence</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>AutoBrief — Automated Multi-Department Reporting Engine</h3>
+        <a href="https://github.com/SheilaMumbi/AutoBrief" target="_blank">Repository ↗</a>
+      </div>
+      <p class="project-stack">Python · Flask · Gemini API · Jinja2</p>
+      <ul>
+        <li>Built a config-driven reporting engine that pulls data, computes KPIs, and generates narrated insights via the Gemini API across six departments (Sales, Finance, Marketing, Support, HR, Supply Chain) off one shared pipeline.</li>
+        <li>Designed the AI-insight step to narrate pre-computed KPIs only, never asking the model to do arithmetic, keeping numbers reliable.</li>
+        <li>Shipped both a CLI tool and a Flask + HTML/CSS/JS dashboard for department-level reporting.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Tafsiri — AI Client Workflow Automation for Creative Agencies</h3>
+        <a href="https://github.com/DanDev014/Genesis-AI-Hackathon" target="_blank">Repository ↗</a>
+      </div>
+      <p class="project-stack">Python · FastAPI · PostgreSQL · Gemini API — 5-person team project</p>
+      <ul>
+        <li>Built the Client Payment Risk / Cash Flow Predictability engine as a FastAPI service within a 5-person team building an end-to-end AI agency-workflow tool (discovery calls, proposal generation, quoting, manager approval, and QuickBooks integration).</li>
+        <li>Identified and resolved two data leakage issues that were silently inflating model performance.</li>
+        <li>Debugged backend infrastructure issues (import-order bugs, Postgres sequence desync) and documented fixes via detailed PRs.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Kenya Regional Crop Yield Prediction</h3>
+        <a href="https://github.com/SheilaMumbi/Regional_Crop_Yield_Prediction_Kenya" target="_blank">Repository ↗</a>
+      </div>
+      <p class="project-stack">Python · Scikit-learn · Pandas · NumPy · Matplotlib</p>
+      <ul>
+        <li>Developed an agricultural forecasting pipeline to predict regional crop yields in Kenya by integrating climate data, pesticide usage, and historical production metrics.</li>
+        <li>Consolidated multi-source data from Kaggle, HarvestStat, and OpenAfrica, resolving spatial mismatches and engineering custom seasonal climate features (Long vs. Short Rains).</li>
+        <li>Implemented and optimized Random Forest and XGBoost regressors, outperforming the baseline Linear Regression model by capturing complex, non-linear interactions between rainfall and crop output.</li>
+        <li>Deployed the final model as a web application via Flask on Render, providing actionable forecasts to support early-warning food security planning and resource allocation.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>SyriaTel Customer Churn Prediction</h3>
+        <a href="https://github.com/SheilaMumbi/SyriaTel_Retention_Insights" target="_blank">Repository ↗</a>
+      </div>
+      <p class="project-stack">Python · Scikit-learn · Pandas · NumPy · Matplotlib · Seaborn</p>
+      <ul>
+        <li>Built an end-to-end machine learning classification pipeline to predict customer attrition and safeguard telecom revenue using historical account data.</li>
+        <li>Engineered data pipelines to drop non-actionable columns, encode binary plan metrics, and apply stratified splitting to manage class distributions cleanly across 3,333 records.</li>
+        <li>Evaluated baseline models against Logistic Regression and a fine-tuned Decision Tree Classifier, choosing the tree architecture to achieve the best balance of interpretability and performance.</li>
+        <li>Optimized the model to maximize Churn Recall (64%) and Precision (76%) at a 92% overall accuracy rate, successfully filtering high-risk accounts to help retention teams proactively minimize revenue loss.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Supermarket Performance Optimization Pipeline</h3>
+        <a href="https://github.com/SheilaMumbi/supermarket-performance-analytics" target="_blank">Repository ↗</a>
+      </div>
+      <p class="project-stack">Python (Pandas, NumPy, Statsmodels) · SQL · Tableau · Power BI</p>
+      <ul>
+        <li>Engineered an end-to-end retail data science framework to analyze the operational variables driving footprint efficiency and revenue velocity across store locations.</li>
+        <li>Conducted bivariate OLS regression analysis to discover a deterministic linear relationship (ρ=0.999) between store area and inventory capacity, alongside identifying a traffic paradox where gross footfall decoupled from total sales volumes.</li>
+        <li>Resolved traditional grouping errors by replacing rigid, hardcoded spatial boundaries with dynamic, dataset-driven percentiles, ensuring perfectly balanced classification metrics across varying store sizes.</li>
+        <li>Built interactive dashboards in Tableau and Power BI to translate complex retail metrics into actionable stakeholder insights.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="edu-main">
+        <h3>Bachelor of Science in Applied Mathematics</h3>
+        <div class="org">University of Nairobi</div>
+      </div>
+      <div class="edu-dates">Expected 2026</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-main">
+        <h3>Data Science Bootcamp</h3>
+        <div class="org">Moringa School</div>
+        <p>Intensive hands-on program in Python, machine learning, and data visualization. Capstone projects: SyriaTel Customer Churn Prediction, Kenya Regional Crop Yield Prediction.</p>
+      </div>
+      <div class="edu-dates">Aug 2025 – Feb 2026</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <div class="cert-item">
+      <span class="cert-name">Data Science Program</span>
+      <span class="cert-org">eMobilis Technological Institute</span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-name">Python for Data Analysis</span>
+      <span class="cert-org">FreeCodeCamp</span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-name">Machine Learning &amp; Data Visualization</span>
+      <span class="cert-org">Kaggle</span>
+    </div>
+  </section>
+
+  <footer class="langs">
+    <strong>Languages:</strong> English (Fluent) · Swahili (Fluent)
+  </footer>
+
+</div>
+</body>
+</html>
