@@ -1,31 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
 
-const ALL_IMAGES = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+interface MarqueeProject {
+  domain: string;
+  name: string;
+  tag: string;
+}
+
+const ROW_1: MarqueeProject[] = [
+  { domain: 'Automation · AI Reporting', name: 'AutoBrief', tag: 'Flask' },
+  { domain: 'AI Automation · Agency Workflow', name: 'Tafsiri', tag: 'FastAPI' },
+  { domain: 'Telecom · Churn Analysis', name: 'SyriaTel Retention & Revenue Insights', tag: 'Scikit-learn' },
+  { domain: 'Health · Predictive Modeling', name: 'Pulse Metrix', tag: 'EDA' },
 ];
 
-const ROW_1 = ALL_IMAGES.slice(0, 11);
-const ROW_2 = ALL_IMAGES.slice(11);
+const ROW_2: MarqueeProject[] = [
+  { domain: 'Aviation · Risk Analytics', name: 'Aviation Risk Insights', tag: 'Tableau' },
+  { domain: 'Agriculture · ML Forecasting', name: 'Regional Crop Yield Prediction', tag: 'Climate Data' },
+  { domain: 'Retail · Business Intelligence', name: 'Supermarket Sales Analysis', tag: 'Seaborn' },
+  { domain: 'Tools · Streamlit App', name: 'Data Refinery Studio', tag: 'Plotly' },
+];
 
 function triple<T>(arr: T[]): T[] {
   return [...arr, ...arr, ...arr];
@@ -33,6 +26,25 @@ function triple<T>(arr: T[]): T[] {
 
 const ROW_1_TRIPLED = triple(ROW_1);
 const ROW_2_TRIPLED = triple(ROW_2);
+
+function Tile({ project }: { project: MarqueeProject }) {
+  return (
+    <div
+      className="w-[420px] h-[270px] rounded-2xl flex-shrink-0 border border-[#D7E2EA]/15 p-7 flex flex-col justify-between"
+      style={{ background: 'linear-gradient(135deg, rgba(86,47,69,0.35) 0%, rgba(12,12,12,0.9) 100%)' }}
+    >
+      <span className="text-[#D7E2EA] uppercase tracking-widest text-xs opacity-60">
+        {project.domain}
+      </span>
+      <div className="flex items-end justify-between gap-4">
+        <span className="text-[#D7E2EA] font-semibold text-xl leading-tight">{project.name}</span>
+        <span className="text-[#D7E2EA] uppercase tracking-wider text-[0.65rem] border border-[#D7E2EA]/30 rounded-full px-3 py-1 flex-shrink-0">
+          {project.tag}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -59,14 +71,8 @@ export default function MarqueeSection() {
           className="flex gap-3"
           style={{ transform: `translateX(${offset - 200}px)`, willChange: 'transform' }}
         >
-          {ROW_1_TRIPLED.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt=""
-              loading="lazy"
-              className="w-[420px] h-[270px] rounded-2xl object-cover flex-shrink-0"
-            />
+          {ROW_1_TRIPLED.map((project, i) => (
+            <Tile key={i} project={project} />
           ))}
         </div>
       </div>
@@ -75,14 +81,8 @@ export default function MarqueeSection() {
           className="flex gap-3"
           style={{ transform: `translateX(${-(offset - 200)}px)`, willChange: 'transform' }}
         >
-          {ROW_2_TRIPLED.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt=""
-              loading="lazy"
-              className="w-[420px] h-[270px] rounded-2xl object-cover flex-shrink-0"
-            />
+          {ROW_2_TRIPLED.map((project, i) => (
+            <Tile key={i} project={project} />
           ))}
         </div>
       </div>
