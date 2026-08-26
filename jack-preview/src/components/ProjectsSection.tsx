@@ -1,5 +1,6 @@
 import { useRef, type CSSProperties } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Sparkles, Workflow, Plane, type LucideIcon } from 'lucide-react';
 import FadeIn from './FadeIn';
 import LiveProjectButton from './LiveProjectButton';
 
@@ -7,48 +8,43 @@ interface Project {
   number: string;
   category: string;
   name: string;
-  images: {
-    col1: [string, string];
-    col2: string;
-  };
+  icon: LucideIcon;
+  stat: string;
+  statLabel: string;
+  tags: string[];
+  repoUrl: string;
 }
 
 const PROJECTS: Project[] = [
   {
     number: '01',
-    category: 'Client',
-    name: 'Nextlevel Studio',
-    images: {
-      col1: [
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-      ],
-      col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
-    },
+    category: 'Automation · AI Reporting',
+    name: 'AutoBrief',
+    icon: Sparkles,
+    stat: '6',
+    statLabel: 'departments on one shared pipeline',
+    tags: ['Python', 'Flask', 'Gemini API', 'Jinja2'],
+    repoUrl: 'https://github.com/SheilaMumbi/AutoBrief',
   },
   {
     number: '02',
-    category: 'Personal',
-    name: 'Aura Brand Identity',
-    images: {
-      col1: [
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-      ],
-      col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
-    },
+    category: 'AI Automation · Agency Workflow',
+    name: 'Tafsiri',
+    icon: Workflow,
+    stat: '5',
+    statLabel: 'person team, full agency workflow',
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Gemini API'],
+    repoUrl: 'https://github.com/DanDev014/Genesis-AI-Hackathon',
   },
   {
     number: '03',
-    category: 'Client',
-    name: 'Solaris Digital',
-    images: {
-      col1: [
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-      ],
-      col2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
-    },
+    category: 'Aviation · Risk Analytics',
+    name: 'Aviation Risk Insights',
+    icon: Plane,
+    stat: '100+',
+    statLabel: 'years of global accident data analyzed',
+    tags: ['Python', 'Tableau', 'Pandas'],
+    repoUrl: 'https://github.com/SheilaMumbi/aviation_risk_insights.git',
   },
 ];
 
@@ -74,6 +70,8 @@ function ProjectCard({
     '--card-top-base': `${96 + index * 28}px`,
     '--card-top-md': `${128 + index * 28}px`,
   } as CSSProperties;
+
+  const Icon = project.icon;
 
   return (
     <div
@@ -102,33 +100,55 @@ function ProjectCard({
               </span>
             </div>
           </div>
-          <LiveProjectButton />
+          <LiveProjectButton href={project.repoUrl} label="View Repository" />
         </div>
 
         <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
           <div className="flex flex-col gap-3 sm:gap-4" style={{ width: '40%' }}>
-            <img
-              src={project.images.col1[0]}
-              alt=""
-              loading="lazy"
-              className="w-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}
-            />
-            <img
-              src={project.images.col1[1]}
-              alt=""
-              loading="lazy"
-              className="w-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}
-            />
+            <div
+              className="w-full flex items-center justify-center rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[#D7E2EA]/25"
+              style={{
+                height: 'clamp(130px, 16vw, 230px)',
+                background: 'linear-gradient(135deg, rgba(86,47,69,0.5) 0%, rgba(12,12,12,0.9) 100%)',
+              }}
+            >
+              <Icon className="w-[35%] h-[35%] text-[#D7E2EA]" strokeWidth={1.25} />
+            </div>
+            <div
+              className="w-full flex flex-col items-center justify-center gap-2 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[#D7E2EA]/25 px-4 text-center"
+              style={{
+                height: 'clamp(160px, 22vw, 340px)',
+                background: 'linear-gradient(135deg, rgba(92,40,64,0.5) 0%, rgba(12,12,12,0.9) 100%)',
+              }}
+            >
+              <span
+                className="hero-heading font-black leading-none"
+                style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+              >
+                {project.stat}
+              </span>
+              <span className="text-[#D7E2EA] uppercase tracking-wide text-xs sm:text-sm opacity-60">
+                {project.statLabel}
+              </span>
+            </div>
           </div>
-          <div style={{ width: '60%' }}>
-            <img
-              src={project.images.col2}
-              alt=""
-              loading="lazy"
-              className="w-full h-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
-            />
+          <div
+            className="flex flex-col justify-between rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[#D7E2EA]/25 p-6 sm:p-8"
+            style={{ width: '60%', background: 'linear-gradient(160deg, rgba(58,23,41,0.5) 0%, rgba(12,12,12,0.95) 100%)' }}
+          >
+            <span className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs sm:text-sm">
+              Tech stack
+            </span>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[#D7E2EA] uppercase tracking-wide text-xs sm:text-sm border border-[#D7E2EA]/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -138,7 +158,7 @@ function ProjectCard({
 
 export default function ProjectsSection() {
   return (
-    <section className="relative bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
+    <section id="projects" className="relative bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-10 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
       <FadeIn delay={0}>
         <h2
           className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28"

@@ -2,7 +2,7 @@ import FadeIn from './FadeIn';
 import Magnet from './Magnet';
 import ContactButton from './ContactButton';
 
-const NAV_LINKS = ['About', 'Price', 'Projects', 'Contact'];
+const NAV_LINKS = ['About', 'Skills', 'Projects', 'Contact'];
 
 export default function HeroSection() {
   return (
@@ -27,7 +27,7 @@ export default function HeroSection() {
       <div className="overflow-hidden">
         <FadeIn delay={0.15} y={40}>
           <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">
-            Hi, i&apos;m jack
+            Hi, i&apos;m sheilla
           </h1>
         </FadeIn>
       </div>
@@ -40,7 +40,7 @@ export default function HeroSection() {
             className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
           >
-            a 3d creator driven by crafting striking and unforgettable projects
+            a data scientist driven by turning raw data into clear, confident decisions
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
@@ -57,9 +57,9 @@ export default function HeroSection() {
             inactiveTransition="transform 0.6s ease-in-out"
           >
             <img
-              src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-              alt="Jack portrait"
-              className="w-full h-auto"
+              src="/sheilla-portrait.jpeg"
+              alt="Sheilla Mumbi Macharia"
+              className="w-full aspect-[4/5] object-cover rounded-[32px] border-2 border-[#D7E2EA]/40"
             />
           </Magnet>
         </FadeIn>
