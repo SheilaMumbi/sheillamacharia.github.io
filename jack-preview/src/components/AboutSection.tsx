@@ -1,10 +1,10 @@
-import { Database, Brain, LineChart, Sparkles } from 'lucide-react';
+import { Database, Server, LayoutTemplate, Sparkles } from 'lucide-react';
 import FadeIn from './FadeIn';
 import AnimatedText from './AnimatedText';
 import ContactButton from './ContactButton';
 
 const ABOUT_TEXT =
-  "With a B.Sc. in Applied Mathematics and hands-on data science training, I build predictive models, automated reporting pipelines, and AI-powered tools across health, retail, telecom, and agriculture. I'm drawn to the why behind the numbers — let's turn your data into decisions.";
+  "I started in data science, with a B.Sc. in Applied Mathematics and models for health, telecom, retail and agriculture. Then I wanted to build the systems that deliver those insights, so I became a backend engineer: FastAPI services, Postgres, and AI-assisted reporting pipelines. Now I'm learning front-end, so the whole product is mine to build.";
 
 function CornerIcon({ Icon }: { Icon: typeof Database }) {
   return (
@@ -33,7 +33,7 @@ export default function AboutSection() {
         duration={0.9}
         className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]"
       >
-        <CornerIcon Icon={LineChart} />
+        <CornerIcon Icon={LayoutTemplate} />
       </FadeIn>
       <FadeIn
         delay={0.15}
@@ -42,7 +42,7 @@ export default function AboutSection() {
         duration={0.9}
         className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]"
       >
-        <CornerIcon Icon={Brain} />
+        <CornerIcon Icon={Server} />
       </FadeIn>
       <FadeIn
         delay={0.3}

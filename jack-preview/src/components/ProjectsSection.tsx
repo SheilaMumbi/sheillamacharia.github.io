@@ -1,59 +1,27 @@
 import { useRef, type CSSProperties } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles, Workflow, Plane, type LucideIcon } from 'lucide-react';
+import { Sparkles, Workflow, ShoppingBag, HeartPulse, type LucideIcon } from 'lucide-react';
 import FadeIn from './FadeIn';
 import LiveProjectButton from './LiveProjectButton';
+import { FEATURED, PILLARS } from '../data/portfolio';
 
-interface Project {
-  number: string;
-  category: string;
-  name: string;
-  icon: LucideIcon;
-  stat: string;
-  statLabel: string;
-  tags: string[];
-  repoUrl: string;
-}
+type FeaturedProject = (typeof FEATURED)[number];
 
-const PROJECTS: Project[] = [
-  {
-    number: '01',
-    category: 'Automation · AI Reporting',
-    name: 'AutoBrief',
-    icon: Sparkles,
-    stat: '6',
-    statLabel: 'departments on one shared pipeline',
-    tags: ['Python', 'Flask', 'Gemini API', 'Jinja2'],
-    repoUrl: 'https://github.com/SheilaMumbi/AutoBrief',
-  },
-  {
-    number: '02',
-    category: 'AI Automation · Agency Workflow',
-    name: 'Tafsiri',
-    icon: Workflow,
-    stat: '5',
-    statLabel: 'person team, full agency workflow',
-    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Gemini API'],
-    repoUrl: 'https://github.com/DanDev014/Genesis-AI-Hackathon',
-  },
-  {
-    number: '03',
-    category: 'Aviation · Risk Analytics',
-    name: 'Aviation Risk Insights',
-    icon: Plane,
-    stat: '100+',
-    statLabel: 'years of global accident data analyzed',
-    tags: ['Python', 'Tableau', 'Pandas'],
-    repoUrl: 'https://github.com/SheilaMumbi/aviation_risk_insights.git',
-  },
-];
+const ICONS: Record<string, LucideIcon> = {
+  AutoBrief: Sparkles,
+  Tafsiri: Workflow,
+  SokoLive: ShoppingBag,
+  'Pulse Metrix': HeartPulse,
+};
+
+const pillarLabel = (id: string) => PILLARS.find((p) => p.id === id)?.short ?? id;
 
 function ProjectCard({
   project,
   index,
   total,
 }: {
-  project: Project;
+  project: FeaturedProject;
   index: number;
   total: number;
 }) {
@@ -71,7 +39,7 @@ function ProjectCard({
     '--card-top-md': `${128 + index * 28}px`,
   } as CSSProperties;
 
-  const Icon = project.icon;
+  const Icon = ICONS[project.name] ?? Sparkles;
 
   return (
     <div
@@ -89,7 +57,7 @@ function ProjectCard({
               className="font-black text-[#D7E2EA] leading-none"
               style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}
             >
-              {project.number}
+              {String(index + 1).padStart(2, '0')}
             </span>
             <div className="flex flex-col gap-1">
               <span className="text-[#D7E2EA] uppercase tracking-widest text-xs sm:text-sm opacity-60">
@@ -100,7 +68,10 @@ function ProjectCard({
               </span>
             </div>
           </div>
-          <LiveProjectButton href={project.repoUrl} label="View Repository" />
+          <div className="flex gap-3 flex-wrap">
+            {project.liveUrl && <LiveProjectButton href={project.liveUrl} label="Live Demo" />}
+            <LiveProjectButton href={project.repoUrl} label="Repository" />
+          </div>
         </div>
 
         <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
@@ -136,9 +107,14 @@ function ProjectCard({
             className="flex flex-col justify-between rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-[#D7E2EA]/25 p-6 sm:p-8"
             style={{ width: '60%', background: 'linear-gradient(160deg, rgba(58,23,41,0.5) 0%, rgba(12,12,12,0.95) 100%)' }}
           >
-            <span className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs sm:text-sm">
-              Tech stack
-            </span>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <span className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs sm:text-sm">
+                {pillarLabel(project.pillar)}
+              </span>
+              <p className="text-[#D7E2EA] font-light leading-relaxed text-xs sm:text-base md:text-lg">
+                {project.description}
+              </p>
+            </div>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {project.tags.map((tag) => (
                 <span
@@ -164,13 +140,13 @@ export default function ProjectsSection() {
           className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Project
+          Featured
         </h2>
       </FadeIn>
 
       <div className="max-w-6xl mx-auto flex flex-col gap-8">
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.number} project={project} index={i} total={PROJECTS.length} />
+        {FEATURED.map((project, i) => (
+          <ProjectCard key={project.name} project={project} index={i} total={FEATURED.length} />
         ))}
       </div>
     </section>

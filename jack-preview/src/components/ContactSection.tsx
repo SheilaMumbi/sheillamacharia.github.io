@@ -36,7 +36,7 @@ export default function ContactSection() {
           className="hero-heading font-black uppercase leading-none tracking-tight"
           style={{ fontSize: 'clamp(2.5rem, 9vw, 120px)' }}
         >
-          Let&apos;s build with data
+          Let&apos;s build something
         </h2>
       </FadeIn>
 
@@ -45,7 +45,7 @@ export default function ContactSection() {
           className="text-[#D7E2EA] font-light max-w-[480px]"
           style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.25rem)' }}
         >
-          Open to data science roles, analytics projects, and collaborations. Based in Nairobi —
+          Open to backend, data and junior full-stack roles, and to collaborations. Based in Nairobi —
           available remotely.
         </p>
       </FadeIn>
@@ -65,7 +65,7 @@ export default function ContactSection() {
             </a>
           ))}
           <a
-            href="/Sheilla_Macharia_CV.pdf"
+            href={`${import.meta.env.BASE_URL}Sheilla_Macharia_CV.pdf`}
             download="Sheilla_Mumbi_Macharia_Resume.pdf"
             className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-6 py-3 text-xs sm:text-sm hover:bg-[#D7E2EA]/10 transition-colors duration-200"
           >

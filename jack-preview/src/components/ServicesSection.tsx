@@ -1,40 +1,5 @@
 import FadeIn from './FadeIn';
-
-const SKILLS = [
-  {
-    number: '01',
-    name: 'Languages & Core',
-    description: 'Python, SQL, Git, GitHub — core tools for data wrangling, querying, and version control.',
-  },
-  {
-    number: '02',
-    name: 'Data Science & ML',
-    description:
-      'Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Jupyter — the full Python data stack, from EDA to model evaluation.',
-  },
-  {
-    number: '03',
-    name: 'Backend & Automation',
-    description:
-      'FastAPI, Flask, PostgreSQL — building backend services, APIs, and scheduled pipelines that deliver insights automatically.',
-  },
-  {
-    number: '04',
-    name: 'Visualization & BI',
-    description: 'Tableau, Power BI, Streamlit, Excel — building executive-ready dashboards and interactive reports.',
-  },
-  {
-    number: '05',
-    name: 'Frontend',
-    description: 'React, Tailwind CSS — building the UI layer for dashboards and internal tools.',
-  },
-  {
-    number: '06',
-    name: 'Analytics & Business',
-    description:
-      'KPI design, churn & sentiment analysis, trend forecasting, and time-series causal analysis.',
-  },
-];
+import { SKILLS } from '../data/portfolio';
 
 export default function ServicesSection() {
   return (
@@ -62,18 +27,33 @@ export default function ServicesSection() {
                 {skill.number}
               </span>
               <div className="flex flex-col gap-3 sm:gap-4 pt-2 sm:pt-4">
-                <h3
-                  className="font-medium uppercase text-[#0C0C0C]"
-                  style={{ fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}
-                >
-                  {skill.name}
-                </h3>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h3
+                    className="font-medium uppercase text-[#0C0C0C]"
+                    style={{ fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}
+                  >
+                    {skill.name}
+                  </h3>
+                  <span className="uppercase tracking-widest text-[0.65rem] sm:text-xs text-[#0C0C0C]/70 border border-[#0C0C0C]/25 rounded-full px-3 py-1">
+                    {skill.status}
+                  </span>
+                </div>
                 <p
                   className="font-light leading-relaxed max-w-2xl text-[#0C0C0C]"
                   style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)', opacity: 0.6 }}
                 >
-                  {skill.description}
+                  {skill.blurb}
                 </p>
+                <ul className="flex flex-wrap gap-2 mt-1">
+                  {skill.skills.map((s) => (
+                    <li
+                      key={s}
+                      className="text-[#0C0C0C] text-xs sm:text-sm border border-[#0C0C0C]/20 rounded-full px-3 py-1.5"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </FadeIn>
