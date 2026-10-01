@@ -7,17 +7,17 @@ interface MarqueeProject {
 }
 
 const ROW_1: MarqueeProject[] = [
-  { domain: 'Automation · AI Reporting', name: 'AutoBrief', tag: 'Flask' },
-  { domain: 'AI Automation · Agency Workflow', name: 'Tafsiri', tag: 'FastAPI' },
-  { domain: 'Telecom · Churn Analysis', name: 'SyriaTel Retention & Revenue Insights', tag: 'Scikit-learn' },
-  { domain: 'Health · Predictive Modeling', name: 'Pulse Metrix', tag: 'EDA' },
+  { domain: 'Backend · AI Reporting', name: 'AutoBrief', tag: 'Flask' },
+  { domain: 'Backend · Agency Workflow', name: 'Tafsiri', tag: 'FastAPI' },
+  { domain: 'Front-end · Live Commerce', name: 'SokoLive', tag: 'React' },
+  { domain: 'Data Science · Health', name: 'Pulse Metrix', tag: 'Scikit-learn' },
 ];
 
 const ROW_2: MarqueeProject[] = [
-  { domain: 'Aviation · Risk Analytics', name: 'Aviation Risk Insights', tag: 'Tableau' },
-  { domain: 'Agriculture · ML Forecasting', name: 'Regional Crop Yield Prediction', tag: 'Climate Data' },
-  { domain: 'Retail · Business Intelligence', name: 'Supermarket Sales Analysis', tag: 'Seaborn' },
-  { domain: 'Tools · Streamlit App', name: 'Data Refinery Studio', tag: 'Plotly' },
+  { domain: 'Data Science · Telecom', name: 'SyriaTel Retention & Revenue Insights', tag: 'Churn' },
+  { domain: 'Data Science · Agriculture', name: 'Regional Crop Yield Prediction', tag: 'Forecasting' },
+  { domain: 'Data Science · Aviation', name: 'Aviation Risk Insights', tag: 'Tableau' },
+  { domain: 'Front-end · Learning', name: 'Smart Kitchen Scaler', tag: 'JavaScript' },
 ];
 
 function triple<T>(arr: T[]): T[] {

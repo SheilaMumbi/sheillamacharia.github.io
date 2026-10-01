@@ -14,14 +14,27 @@ export default function AnimatedText({ text, className, style }: AnimatedTextPro
     offset: ['start 0.8', 'end 0.2'],
   });
 
-  const characters = text.split('');
+  const total = text.length;
+  // Split on spaces but keep them, so each word can be kept unbroken while letters still animate one by one.
+  const tokens = text.split(/( )/).map((token, i, all) => ({
+    token,
+    start: all.slice(0, i).reduce((sum, t) => sum + t.length, 0),
+  }));
 
   return (
     <p ref={ref} className={className} style={style}>
-      {characters.map((char, i) => {
-        const start = i / characters.length;
-        const end = start + 1 / characters.length;
-        return <Char key={i} char={char} progress={scrollYProgress} range={[start, end]} />;
+      {tokens.map(({ token, start }) => {
+        const chars = token.split('').map((char, j) => {
+          const from = (start + j) / total;
+          return <Char key={j} char={char} progress={scrollYProgress} range={[from, from + 1 / total]} />;
+        });
+        return token === ' ' ? (
+          chars
+        ) : (
+          <span key={start} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+            {chars}
+          </span>
+        );
       })}
     </p>
   );
