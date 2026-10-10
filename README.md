@@ -1,6 +1,9 @@
 # Sheilla Macharia
 
-My portfolio. Live at [sheilamumbi.github.io/sheillamacharia.github.io](https://sheilamumbi.github.io/sheillamacharia.github.io/).
+My portfolio.
+
+- **Live:** [sheilla-macharia.vercel.app](https://sheilla-macharia.vercel.app)
+- **Mirror:** [sheilamumbi.github.io/sheillamacharia.github.io](https://sheilamumbi.github.io/sheillamacharia.github.io/)
 
 Built with React, TypeScript and Vite, with hand-written CSS. Icons from lucide-react and simple-icons. Set in Plus Jakarta Sans.
 
@@ -16,4 +19,4 @@ pnpm dev     # http://localhost:5173
 pnpm build
 ```
 
-Pushing to `main` deploys to GitHub Pages through `.github/workflows/deploy.yml`.
+Pushing to `main` deploys to both: Vercel builds it through its GitHub integration (settings in `vercel.json`), and GitHub Pages builds it through `.github/workflows/deploy.yml`.
